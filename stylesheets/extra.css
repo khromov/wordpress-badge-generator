@@ -1,0 +1,20 @@
+h1
+{
+    font-size: 2em !important;
+}
+
+h2
+{
+    padding-top: 10px;
+}
+
+.footer-text
+{
+    padding: 15px !important;
+}
+
+.underline
+{
+    font-style: italic;
+    font-size: 0.9em;
+}
