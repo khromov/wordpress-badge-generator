@@ -18,3 +18,8 @@ h2
     font-style: italic;
     font-size: 0.9em;
 }
+
+#domain
+{
+    width: 60%;
+}
