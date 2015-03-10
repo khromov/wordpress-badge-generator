@@ -1,45 +1,62 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="viewport" content="width=640">
+<head>
+	<meta charset='utf-8'>
+	<meta http-equiv="X-UA-Compatible" content="chrome=1">
+	<meta name="viewport" content="width=640">
 
-    <link rel="stylesheet" href="stylesheets/core.css" media="screen">
-    <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-device-width:640px)">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <link rel="stylesheet" href="stylesheets/extra.css">
+	<link rel="stylesheet" href="stylesheets/core.css" media="screen">
+	<link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-device-width:640px)">
+	<link rel="stylesheet" href="stylesheets/pygment_trac.css">
+	<link rel="stylesheet" href="stylesheets/extra.css">
 
-    <script type="text/javascript" src="javascripts/modernizr.js"></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script type="text/javascript" src="javascripts/headsmart.min.js"></script>
-    <script type="text/javascript">
-      function regenerate()
-      {
-        var badgeUrl = 'https://khromov.github.io/wordpress-badge-generator/images/wordpress-download-btn.png';
-        //Set preview
-        $('#button-preview').attr('href', $('#domain').val());
+	<script type="text/javascript" src="javascripts/modernizr.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script type="text/javascript" src="javascripts/headsmart.min.js"></script>
+	<script type="text/javascript">
 
-        //Set generated code
-        var template = '<a href="'+ $('#domain').val() +'" target="_blank">\n' +
-                        '<img src="'+ badgeUrl + '"/>'+ '\n' +
-                        '</a>\n';
-        $('#vhost').val(template);
-      }
+		var badgeUrl = 'https://khromov.github.io/wordpress-badge-generator/images/wp-button-large.png';
 
-      $(document).ready(function () {
-        $('#main_content').headsmart();
-        regenerate();
-      });
-    </script>
-    <title>Wordpress Badge Generator</title>
-  </head>
+		function regenerate() {
 
-  <body>
-    <a id="forkme_banner" href="https://github.com/khromov/wordpress-badge-generator">View on GitHub</a>
-    <div class="shell">
+			$( '.results li' ).each( function () {
 
-      <header>
+
+				//Set preview URL
+				$( '.button-preview' ).attr( 'href', $( '#domain' ).val() );
+
+				//Set new badge URL
+				badgeUrl = $( this ).find( 'img' ).attr( 'src' );
+
+				console.log( badgeUrl );
+
+				//Set generated code
+				var template = '<a href="' + $( '#domain' ).val() + '" target="_blank">\n' +
+					'<img src="https://khromov.github.io/wordpress-badge-generator/' + badgeUrl + '"/>' + '\n' +
+					'</a>\n';
+
+				$( this ).find( '.vhost' ).val( template );
+
+
+			} );
+
+
+		}
+
+		$( document ).ready( function () {
+			$( '#main_content' ).headsmart();
+			regenerate();
+		} );
+	</script>
+	<title>Wordpress Badge Generator</title>
+</head>
+
+<body>
+<a id="forkme_banner" href="https://github.com/khromov/wordpress-badge-generator">View on GitHub</a>
+
+<div class="shell">
+
+	<header>
         <span class="ribbon-outer">
           <span class="ribbon-inner">
             <h1>Wordpress Badge Generator</h1>
@@ -48,74 +65,104 @@
           <span class="left-tail"></span>
           <span class="right-tail"></span>
         </span>
-      </header>
+	</header>
 
-      <section id="downloads">
+	<section id="downloads">
         <span class="inner">
         </span>
-      </section>
+	</section>
 
-      <span class="banner-fix"></span>
+	<span class="banner-fix"></span>
 
 
-      <section id="main_content">
-        <h3>
-          Generate Badge
-        </h3>
+	<section id="main_content">
+		<h3>
+			Generate Badge
+		</h3>
 
-        <div class="main">
+		<div class="main">
 
-          <p>
-            This page will let you generate a beautiful badge for your website to advertise your <a href="http://wordpress.org" target="_blank">WordPress</a> theme or plugin. Badge created by <a href="https://www.seedprod.com/wordpress-theme-plugin-download-button/" target="_blank">SeedProd</a>.
-          </p>
+			<p>
+				This page will let you generate a beautiful badge for your website to advertise your
+				<a href="http://wordpress.org" target="_blank">WordPress</a> theme or plugin. Badge created by
+				<a href="https://www.seedprod.com/wordpress-theme-plugin-download-button/" target="_blank">SeedProd</a>.
+			</p>
 
-          <p>
-            <strong>
-              URL to your plugin or theme
-            </strong>
-          </p>
-          <input id="domain"  type="text" name="domain" value="https://wordpress.org/plugins/email-obfuscate-shortcode/" oninput="regenerate()" onClick="this.select();">
+			<p>
+				<strong>
+					URL to your plugin or theme
+				</strong>
+			</p>
+			<input id="domain" type="text" name="domain" value="https://wordpress.org/plugins/email-obfuscate-shortcode/" oninput="regenerate()" onClick="this.select();">
 
-          <p>
-            <strong>
-              Result
-            </strong>
-          </p>
-          <div class="result">
-            <a href="" id="button-preview" target="_blank">
-              <img src="images/wordpress-download-btn.png">
-            </a>
-          </div>
+			<p class="underline">
+				<strong>Result:</strong> Copy and paste the embed code below each badge onto your blog or website
+			</p>
 
-          <p>
-            <strong>
-              Embed code
-            </strong>
-          </p>
+			<div class="results">
+				<ul>
+					<li>
+						<a href="#" class="button-preview button-large" target="_blank">
+							<img src="images/wp-button-large.png">
+						</a>
 
-          <textarea rows="6" cols="60" id="vhost" onClick="this.select();"></textarea>
+						<p>
+							<strong>
+								Large Scale (1000x275) Embed code
+							</strong>
+						</p>
 
-          <p class="underline">
-              Copy and paste this onto your blog or website
-          </p>
+						<textarea rows="6" cols="60" class="vhost" onClick="this.select();"></textarea>
+					</li>
+					<li>
+						<a href="#" class="button-preview  button-medium" target="_blank">
+							<img src="images/wp-button-medium.png">
+						</a>
 
-        </div>
-      </section>
+						<p>
+							<strong>
+								Medium Scale (400x110) Embed code
+							</strong>
+						</p>
 
-      <footer>
+						<textarea rows="6" cols="60" class="vhost" onClick="this.select();"></textarea>
+					</li>
+					<li>
+						<a href="#" class="button-preview button-small" target="_blank">
+							<img src="images/wp-button-small.png">
+						</a>
+
+						<p>
+							<strong>
+								Small Scale (200x55) Embed code
+							</strong>
+						</p>
+
+						<textarea rows="6" cols="60" class="vhost" onClick="this.select();"></textarea>
+					</li>
+				</ul>
+
+			</div>
+
+		</div>
+	</section>
+
+	<footer>
         <span class="ribbon-outer">
           <span class="ribbon-inner">
-            <p class="footer-text">this project by <a href="https://github.com/khromov">khromov</a> can be found on <a href="https://github.com/khromov/wordpress-badge-generator">GitHub</a></p>
+            <p class="footer-text">this project by <a href="https://github.com/khromov">khromov</a> can be found on
+				<a href="https://github.com/khromov/wordpress-badge-generator">GitHub</a></p>
           </span>
           <span class="left-tail"></span>
           <span class="right-tail"></span>
         </span>
-        <p>Generated with <a href="http://pages.github.com">GitHub Pages</a> using Merlot</p>
-        <span class="octocat"></span>
-      </footer>
 
-    </div>
+		<p>Generated with <a href="http://pages.github.com">GitHub Pages</a> using Merlot</p>
+		<span class="octocat"></span>
+	</footer>
+
+</div>
 
 
-  </body>
+</body>
 </html>
