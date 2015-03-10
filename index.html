@@ -20,15 +20,12 @@
 		function regenerate() {
 
 			$( '.results li' ).each( function () {
-
-
+				
 				//Set preview URL
 				$( '.button-preview' ).attr( 'href', $( '#domain' ).val() );
 
 				//Set new badge URL
 				badgeUrl = $( this ).find( 'img' ).attr( 'src' );
-
-				console.log( badgeUrl );
 
 				//Set generated code
 				var template = '<a href="' + $( '#domain' ).val() + '" target="_blank">\n' +
